@@ -29,10 +29,12 @@ function App() {
                 <SearchHeader/>
 
                 <div className="d-flex flex-wrap">
-                    {arrSneakers.map((el) => {
-                        return <Card title={el.name}
+                    {arrSneakers.map((el, index) => {
+                        return <Card key={index}
+                                     title={el.name}
                                      price={el.price}
-                                     imageUrl={el.imageUrl}/>
+                                     imageUrl={el.imageUrl}
+                        />
                     })}
                 </div>
             </div>

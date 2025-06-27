@@ -1,7 +1,10 @@
+import s from "./Drawer.module.scss"
+
+
 export const Drawer = () => {
     return (
-        <div style={{display: "none"}} className="overlay">
-            <div className="drawer">
+        <div style={{display: ""}} className={s.overlay}>
+            <div className={s.drawer}>
                 <h2 className="d-flex justify-between mb-30">Корзина
                     <img
                         className="removeBtn cu-p"
@@ -47,7 +50,7 @@ export const Drawer = () => {
                     </div>
                 </div>
 
-                <div className="cartTotalBlock">
+                <div className={s.cartTotalBlock}>
                     <ul>
                         <li>
                             <span>Итого :</span>
@@ -60,7 +63,7 @@ export const Drawer = () => {
                             <b>1074 руб</b>
                         </li>
                     </ul>
-                    <button className="greenButton">
+                    <button className={s.greenButton}>
                         Оформить заказ
                         <img src="/img/svg/arrow.svg" alt="Arrow"/>
                     </button>
