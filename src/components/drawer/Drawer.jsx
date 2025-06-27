@@ -3,7 +3,7 @@ import s from "./Drawer.module.scss"
 
 export const Drawer = () => {
     return (
-        <div style={{display: ""}} className={s.overlay}>
+        <div style={{display: "none"}} className={s.overlay}>
             <div className={s.drawer}>
                 <h2 className="d-flex justify-between mb-30">Корзина
                     <img
