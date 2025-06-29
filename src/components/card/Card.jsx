@@ -1,27 +1,37 @@
 import s from "./Card.module.scss"
+import {useEffect, useState} from "react";
 
 
-export const Card = (props) => {
+export const Card = ({onClickPlusCard, onClickFavorite, imageUrl, title, price}) => {
+    const [isAdded, setIsAdded] = useState(false)
 
-    const onClickButtonHandler = () => {
-        alert(props.title)
+    const onClickPlus = () => {
+        onClickPlusCard({imageUrl, title, price})
+        setIsAdded(!isAdded)
     }
+
+    useEffect(() => {
+
+    }, [isAdded]);
 
     return (
         <div className={s.card}>
             <div className={s.favorite}>
-                <img src="/img/svg/heart-unliked.svg" alt="Unliked"/>
+                <img src="/img/svg/heart-unliked.svg" alt="Unliked" onClick={onClickFavorite}/>
             </div>
-            <img width={133} height={112} src={props.imageUrl} alt="Sneakers"/>
-            <h5>{props.title}</h5>
+            <img width={133} height={112} src={imageUrl} alt="Sneakers"/>
+            <h5>{title}</h5>
             <div className="d-flex justify-between align-center">
                 <div className="d-flex flex-column">
                     <span>Цена:</span>
-                    <b>{props.price}. руб</b>
+                    <b>{price}. руб</b>
                 </div>
-                <button className={s.button} onClick={onClickButtonHandler}>
-                    <img width={11} height={11} src="/img/svg/+.svg" alt="Plus"/>
-                </button>
+
+                <img className={s.plus} src={isAdded
+                    ? "/img/svg/activeBtn.svg"
+                    : "/img/svg/+.svg"}
+                     alt="Plus"
+                     onClick={onClickPlus}/>
             </div>
         </div>
     )

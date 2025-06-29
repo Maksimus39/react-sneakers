@@ -1,53 +1,42 @@
 import s from "./Drawer.module.scss"
 
 
-export const Drawer = () => {
+export const Drawer = ({onClose, items = []}) => {
     return (
-        <div style={{display: "none"}} className={s.overlay}>
+        <div className={s.overlay}>
             <div className={s.drawer}>
                 <h2 className="d-flex justify-between mb-30">Корзина
                     <img
                         className="removeBtn cu-p"
                         src="/img/svg/removeBtn.svg"
                         alt="Remove"
+                        onClick={onClose}
                     />
                 </h2>
 
                 <div className="items flex 1">
-                    <div className="cartItem d-flex align-center mb-20">
-                        <div
-                            style={{backgroundImage: "url(/img/sneakers/image2.jpg)"}}
-                            className="cartItemImg mr-20"
-                        ></div>
 
-                        <div className="mr-20 flex">
-                            <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-                            <b>12 999 руб.</b>
-                        </div>
+                    {items.map((obj) => {
+                        return (
+                            <div className="cartItem d-flex align-center mb-20">
+                                <div
+                                    style={{backgroundImage: `url(${obj.imageUrl})`}}
+                                    className="cartItemImg mr-20"
+                                ></div>
 
-                        <img
-                            className="removeBtn"
-                            src="/img/svg/removeBtn.svg"
-                            alt="Remove"
-                        />
-                    </div>
-                    <div className="cartItem d-flex align-center mb-20">
-                        <div
-                            style={{backgroundImage: "url(/img/sneakers/image2.jpg)"}}
-                            className="cartItemImg mr-20"
-                        ></div>
+                                <div className="mr-20 flex">
+                                    <p className="mb-5">{obj.name}</p>
+                                    <b>{obj.price}. руб</b>
+                                </div>
 
-                        <div className="mr-20 flex">
-                            <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-                            <b>12 999 руб.</b>
-                        </div>
-
-                        <img
-                            className="removeBtn"
-                            src="/img/svg/removeBtn.svg"
-                            alt="Remove"
-                        />
-                    </div>
+                                <img
+                                    className="removeBtn"
+                                    src="/img/svg/removeBtn.svg"
+                                    alt="Remove"
+                                />
+                            </div>
+                        )
+                    })}
                 </div>
 
                 <div className={s.cartTotalBlock}>
