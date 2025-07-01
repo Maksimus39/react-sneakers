@@ -9,6 +9,7 @@ function App() {
     const [items, setItems] = useState([])
     const [cartItems, setCartItems] = useState([])
     const [cartOpened, setCartOpened] = useState(false)
+    const [searchValue, setSearchValue] = useState('')
 
     useEffect(() => {
         fetch("https://686100428e7486408444997e.mockapi.io/items").then((res) => {
@@ -22,13 +23,19 @@ function App() {
         setCartItems(prev => [el, ...prev])
     }
 
+    const onChangeSearchInput = (event) => {
+        setSearchValue(event.target.value)
+    }
+
     return (
         <div className="wrapper clear">
             {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)}/>}
             <Header onClickCart={() => setCartOpened(true)}/>
 
             <div className="content p-40">
-                <SearchHeader/>
+                <SearchHeader onChangeSearchInput={onChangeSearchInput}
+                              searchValue={searchValue}
+                />
 
                 <div className="d-flex flex-wrap">
                     {items.map((el, index) => {
