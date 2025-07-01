@@ -2,22 +2,28 @@ import s from "./Card.module.scss"
 import {useEffect, useState} from "react";
 
 
-export const Card = ({onClickPlusCard, onClickFavorite, imageUrl, title, price}) => {
+export const Card = ({onClickPlusCard, imageUrl, title, price}) => {
     const [isAdded, setIsAdded] = useState(false)
+    const [isFavorite, setIsFavorite] = useState(true)
+
 
     const onClickPlus = () => {
         onClickPlusCard({imageUrl, title, price})
         setIsAdded(!isAdded)
     }
 
-    useEffect(() => {
-
-    }, [isAdded]);
+    const onClickFavoriteCard = () => {
+        setIsFavorite(!isFavorite)
+    }
 
     return (
         <div className={s.card}>
             <div className={s.favorite}>
-                <img src="/img/svg/heart-unliked.svg" alt="Unliked" onClick={onClickFavorite}/>
+                <img src={isFavorite
+                    ? "/img/svg/heart-unliked.svg"
+                    : "/img/svg/hearts-liked.svg"}
+                     alt="Unliked"
+                     onClick={onClickFavoriteCard}/>
             </div>
             <img width={133} height={112} src={imageUrl} alt="Sneakers"/>
             <h5>{title}</h5>

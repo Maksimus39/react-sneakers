@@ -42,6 +42,15 @@ header {
   border: 1px solid #F3F3F3;
   border-radius: 10px;
   padding: 0 15px;
+  position: relative;
+
+  .clear {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 13px;
+    right: 15px;
+  }
 
   input {
     border: 0;
@@ -50,9 +59,6 @@ header {
     width: 200px;
   }
 }
-
-
-
 
 
 .cartItem {
