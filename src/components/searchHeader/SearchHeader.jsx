@@ -2,7 +2,7 @@ export const SearchHeader = (props) => {
     return (
         <div className="d-flex align-center mb-40 justify-between">
             <h1>{props.searchValue
-                ? `Поиск п запросу: "${props.searchValue}"`
+                ? 'Поиск по запросу:'
                 : 'Все кроссовки'}
             </h1>
 

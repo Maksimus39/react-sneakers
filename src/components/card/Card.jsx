@@ -1,8 +1,8 @@
 import s from "./Card.module.scss"
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 
-export const Card = ({onClickPlusCard, imageUrl, title, price}) => {
+export const Card = ({onClickPlusCard, imageUrl, title, price, onAddToFavorite}) => {
     const [isAdded, setIsAdded] = useState(false)
     const [isFavorite, setIsFavorite] = useState(true)
 
@@ -13,6 +13,7 @@ export const Card = ({onClickPlusCard, imageUrl, title, price}) => {
     }
 
     const onClickFavoriteCard = () => {
+        onAddToFavorite({imageUrl, title, price})
         setIsFavorite(!isFavorite)
     }
 

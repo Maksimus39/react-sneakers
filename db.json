@@ -73,6 +73,19 @@
       "imageUrl": "/img/sneakers/image12.jpg"
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "id": "136e",
+      "imageUrl": "/img/sneakers/image3.jpg",
+      "title": "Мужские Кроссовки Nike Air Max 90",
+      "price": 13499
+    },
+    {
+      "id": "ad1f",
+      "imageUrl": "/img/sneakers/image3.jpg",
+      "title": "Мужские Кроссовки Nike Air Max 90",
+      "price": 13499
+    }
+  ],
   "favorites": []
 }

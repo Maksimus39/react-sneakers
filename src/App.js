@@ -1,9 +1,9 @@
-import {Card} from "./components/card/Card";
 import {Header} from "./components/header/Header";
 import {Drawer} from "./components/drawer/Drawer";
-import {SearchHeader} from "./components/searchHeader/SearchHeader";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {Home} from "./components/pages/Home";
+import {NavLink} from "react-router";
 
 function App() {
 
@@ -38,9 +38,12 @@ function App() {
         setSearchValue(event.target.value)
     }
 
-    const onAddToFavorite = () => {
-
+    const onAddToFavorite = (id) => {
+        axios.post("http://localhost:3000/cart", id).then(res => {
+            setFavorites(prev => [res.data, ...prev])
+        })
     }
+    console.log('2.10.21')
 
     return (
         <div className="wrapper clear">
@@ -52,26 +55,15 @@ function App() {
 
             <Header onClickCart={() => setCartOpened(true)}/>
 
-            <div className="content p-40">
-                <SearchHeader onChangeSearchInput={onChangeSearchInput}
-                              searchValue={searchValue}
-                              setSearchValue={setSearchValue}
+            <NavLink to={'/'}>
+                <Home items={items}
+                      searchValue={searchValue}
+                      favorites={favorites}
+                      onAddToCard={onAddToCard}
+                      onChangeSearchInput={onChangeSearchInput}
+                      onAddToFavorite={onAddToFavorite}
                 />
-
-                <div className="d-flex flex-wrap">
-                    {items
-                        .filter(el => el.title.toLowerCase().includes(searchValue.toLowerCase()))
-                        .map((el, index) => {
-                            return <Card key={index}
-                                         title={el.title}
-                                         price={el.price}
-                                         imageUrl={el.imageUrl}
-                                         onAddToFavorite={() => console.log('добавили в закладки')}
-                                         onClickPlusCard={(el) => onAddToCard(el)}
-                            />
-                        })}
-                </div>
-            </div>
+            </NavLink>
         </div>
     );
 }
