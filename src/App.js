@@ -14,22 +14,22 @@ function App() {
     const [favorites, setFavorites] = useState([])
 
     useEffect(() => {
-        axios.get("https://686100428e7486408444997e.mockapi.io/items").then((res) => {
+        axios.get("http://localhost:3000/items").then((res) => {
             setItems(res.data)
         })
-        axios.get("https://686100428e7486408444997e.mockapi.io/cart").then((res) => {
+        axios.get("http://localhost:3000/cart").then((res) => {
             setCartItems(res.data)
         })
     }, []);
 
     const onAddToCard = (el) => {
-        axios.post("https://686100428e7486408444997e.mockapi.io/cart", el).then(res => {
+        axios.post("http://localhost:3000/cart", el).then(res => {
             setCartItems(prev => [res.data, ...prev])
         })
     }
 
     const onRemoveItem = (id) => {
-        axios.delete(`https://686100428e7486408444997e.mockapi.io/cart/${id}`).then(res => {
+        axios.delete(`http://localhost:3000/cart/${id}`).then(res => {
             setCartItems((prev) => prev.filter(item => item.id !== id))
         })
     }
